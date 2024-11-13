@@ -1,0 +1,765 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Gowun+Batang&family=Quicksand:wght@300..700&display=swap');
+
+body {
+  margin: 0;
+  background: black;
+}
+html {
+  overflow-y: scroll; /* Permite rolagem vertical */
+  overflow-x: hidden; /* Impede o deslocamento horizontal */
+}
+
+/* Estilo das estrelas de fundo */
+.star {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  transform-origin: center;
+  animation: fly 2s linear infinite;
+}
+
+@keyframes fly {
+  0% {
+    transform: translate(0, 0) scale(0.1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x), var(--y)) scale(1.5);
+    opacity: 0;
+  }
+}
+
+
+/* Estilo da tela inicial */
+.inicio {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  color: aliceblue;
+}
+.ola {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 30px;
+  margin-top: 110px;
+}
+.nome {
+  font-family: 'Gowun Batang', serif;
+  font-size: 110px;
+  margin: 0;
+}
+.dev {
+  font-family: "Quicksand", sans-serif;
+  font-size: 30px;
+  margin: 0;
+}
+
+/* Animação dos links (botões) */
+.links a {
+  display: inline-block;
+  margin: 10px;
+  padding: 3px;
+  font-size: 2rem;
+  animation: wave 2.2s ease-in-out infinite;
+}
+@keyframes wave {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+.linkedin {
+  animation-delay: 0s;
+}
+.github {
+  animation-delay: 0.3s;
+}
+.curriculo {
+  animation-delay: 0.6s;
+}
+.links a:hover {
+  animation-play-state: paused;
+  transform: scale(1.1);
+}
+
+/* Animação da seta */
+.seta {
+  display: inline-block;
+  font-size: 1rem;
+  margin-top: 120px;
+  padding: 3px;
+  animation: moveDown 3s ease-in-out infinite;
+}
+@keyframes moveDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.meus {
+  text-align: center;
+  margin-top: 20px;
+}
+.meu-inicio {
+  font-family: "Quicksand", sans-serif;
+  font-size: 40px;
+  color: #fff;
+  opacity: 1;
+  animation: floatingEffect 4s ease-in-out infinite;
+  margin: 63px;
+  padding: 3px;
+}
+@keyframes floatingEffect {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  25% {
+    opacity: 0.7;
+    transform: translateY(-10px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  75% {
+    opacity: 0.7;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.projeto-card {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.container-card {
+  --color: #ff88a6;
+  --border-size: 0.9rem;
+  --bg-color: #171614;
+  position: relative;
+  width: 280px;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius:.8em;
+  background: linear-gradient(50deg,#ff88a6, #ff5c8d);
+  overflow: hidden;
+  isolation: isolate;
+  box-sizing: border-box;
+  z-index: 3;
+}
+
+.container-card::before,
+.container-card::after {
+  content: "";
+  position: absolute;
+}
+
+.container-card::before {
+  width: 450px;
+  height: 90px;
+  top: 0;
+  right: 35px;
+  background: linear-gradient(50deg,#f4e6ea, #f8f1f3);
+  z-index: -2;
+  transition: 1.9s;
+  transform: rotate(-45deg) translate(0, -100px);
+}
+
+.container-card:hover::before {
+  animation: cardEffect 1.9s;
+}
+
+@keyframes cardEffect {
+  100% {
+    transform: rotate(-45deg) translate(0, 450px);
+  }
+}
+
+.container-card::after {
+  background-color: var(--bg-color);
+  inset: 0.25rem;
+  border-radius: calc(var(--border-size) - 0.25rem);
+  transition: background-color 0.35s linear;
+}
+
+.container-card:hover::after {
+  background-color: #191919;
+}
+
+.projeto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 240px;
+  height: 340px;
+  padding: 1em;
+  color: #858585;
+  text-align: center;
+  z-index: 1;
+  gap: 70px;
+  margin-top: 10px;
+}
+
+.projeto h3 {
+  padding: 5px;
+  color: #ff5c8d;
+  font-size: 23px;
+  font-family: 'Cinzel', sans-serif;
+}
+.loader{
+  position: relative;
+  width: 120px;
+  height: 120px;
+  filter: brightness(0.8);
+}
+.loader span{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(calc(18deg * var(--i)));
+}
+.loader span::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #92354f86;  /* Cor com saturação reduzida */
+
+  animation: animate 2s ease-in-out infinite;
+  animation-delay: calc(0.1s * var(--i));
+
+}
+@keyframes animate{
+  0%{
+    transform: scale(1);
+  }
+  80%,100%{
+    transform: scale(0);
+  }
+}
+.projeto p{
+  padding: 5px;
+  color: #f8f1f3;
+  font-size: 19px;
+
+}
+/* Estilo do cartão de habilidades */
+.card {
+  --color: #ff88a6;
+  --border-size: 1rem;
+  --bg-color: #191919;
+  position: relative;
+  background-color: var(--bg-color);
+  width: 280px;
+  height: 450px;
+  margin: 2rem;
+  border-radius: var(--border-size);
+  color: rgb(252, 248, 248);
+  display: grid;
+  place-items: center;
+  padding:  3rem 2rem;
+  isolation: isolate;
+  overflow: hidden;
+  box-sizing: border-box;
+  filter: saturate(1.7);
+}
+.card::before, .card::after {
+  content: "";
+  position: absolute;
+}
+.card::before {
+  width: 200%;
+  height: 200%;
+  background-image: conic-gradient(
+    var(--color) 0deg,
+    transparent 60deg,
+    transparent 180deg,
+    var(--color) 180deg,
+    transparent 240deg);
+  inset: -50%;
+  z-index: -2;
+  animation: border 8s linear infinite;
+  filter: saturate(1.7);
+}
+.card:hover::before {
+  animation-play-state: paused;
+}
+@keyframes border {
+  to {
+    transform: rotateZ(-360deg);
+  }
+}
+.card::after {
+  --inset: 0.25rem;
+  background-color: #111;
+  inset: var(--inset);
+  border-radius: calc(var(--border-size) - var(--inset));
+  z-index: -1;
+  transition: all 0.35s linear;
+  filter: saturate(1.7);
+}
+.card:hover::after {
+  background-color: var(--bg-color);
+}
+.card i {
+  font-size: 4rem;
+  margin-inline: auto;
+  color: transparent;
+  -webkit-text-stroke: thin var(--color);
+  display: block;
+}
+.card .title {
+  text-align: center;
+  font-family: 'Cinzel';
+  font-size: 1.5rem;
+  line-height: 1.875rem;
+  margin-block: 2.5rem 1.5rem;
+  color: var(--color);
+  filter: saturate(1.7);
+}
+.card .detail {
+  line-height: 1.5rem;
+  text-align: center;
+  font-family: 'Quicksand';
+  opacity: 0.9;
+  color: white;
+  filter: saturate(1.7);
+
+}
+
+.minhas-skill {
+  text-align: center;
+  margin-top: 20px;
+}
+.skill-inicio {
+  font-family: "Quicksand", sans-serif;
+  font-size: 40px;
+  color: #fff;
+  opacity: 1;
+  animation: floatingEffect 4s ease-in-out infinite;
+  margin: 63px;
+  padding: 3px;
+  text-align: center;
+  align-items: center;
+  justify-items: center;
+}
+@keyframes floatingEffect {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  25% {
+    opacity: 0.7;
+    transform: translateY(-10px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  75% {
+    opacity: 0.7;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Estilo do swiper-container */
+.swiper-container {
+  overflow: hidden; 
+  display: block;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  gap: 15px 15px; 
+}
+.swiper-slide {
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 280px;  
+  height: 450px;  
+  flex-shrink: 0; /* Impede que os slides encolham */
+  display: flex;  /* Garante o correto posicionamento */
+  transition: transform 0.2 s ease-in-out;  /* Adiciona animação suave na transição */
+}
+/* Alterar cor dos botões de navegação */
+.swiper-button-next, .swiper-button-prev {
+  color: #ff88a6; 
+  font-size: 30px;
+}
+.swiper-button-next::after, .swiper-button-prev::after {
+  content: '';
+  background: url('path/to/your/icon.svg') no-repeat center center; 
+  width: 24px;
+  height: 24px;
+}
+.swiper-pagination .swiper-pagination-bullet {
+  background-color: #ff5c8d !important; 
+}
+.swiper-pagination .swiper-pagination-bullet-active {
+  background-color: #ff5c8d !important; /* Cor do bullet ativo */
+}
+/* Centralizar o swiper-container */
+.tranding-slider {
+  display: flex;
+  justify-content: center; /* Centraliza o swiper */
+  width: 100%;
+  overflow: hidden;
+}
+/* Garantir que o slide ocupe a largura adequada */
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  width: auto; /* Permitir que o swiper ajuste o tamanho dos cards */
+  flex-shrink: 0;
+}
+/* Ajustes para centralizar o conteúdo do slide */
+@media (max-width: 768px) {
+  .swiper-slide {
+    width: 80vw; /* Ajuste a largura para garantir que o card seja centralizado */
+  }
+}
+
+.contato{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+  margin-bottom: 100px;
+  max-height: 25px;
+  padding: 1px;
+  gap: 1px;
+  flex-direction: column;
+  color: #f4e6ea;
+  font-family: 'Quicksand';
+  font-size: 16px;
+  max-height: 1200px;
+}
+.sobreM{
+  font-size: 20px;
+  animation: floatingEffect 4s ease-in-out infinite;
+  margin: 33px;
+  padding: 3px;
+  text-align: center;
+  align-items: center;
+  justify-items: center;
+}
+@keyframes floatingEffect {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  25% {
+    opacity: 0.7;
+    transform: translateY(-10px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  75% {
+    opacity: 0.7;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}.conts p {
+  margin: 3px;
+  padding: 4px;
+  font-size: 17px;
+}
+.perg h2{
+  font-size: 20px;
+  padding: 0;
+}
+.botao{
+  background-color: #191919; 
+  color: rgb(252, 248, 248); 
+  border: 2px solid transparent;
+  border-radius: 1rem; 
+  padding: 10px 20px;
+  font-size: 16px; 
+  font-family: 'Quicksand', sans-serif;
+  cursor: pointer;
+  position: relative; 
+  overflow: hidden; 
+  box-sizing: border-box;  
+}
+.botao:hover{
+  background: #ff88a6;
+  color: #171614;
+}
+.particles-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Coloca as partículas atrás do conteúdo */
+}
+#particles-js {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+@media (max-width: 768px) {
+  #particles-js {
+    background-color: #000;  /* Cor de fundo escuro para contraste */
+  }
+}
+
+/* Asegura que o conteúdo da seção não seja coberto pelo fundo de partículas */
+.contato > div {
+  position: relative;
+  z-index: 1;
+}
+/* Estilos para a seta */
+.scroll-to-top {
+  position: fixed;
+  bottom: -60px; 
+  right: 20px;  
+  background-color: #000; 
+  color: #f8f1f3; 
+  padding: 10px;
+  border-radius: 50%;
+  font-size: 24px;
+  z-index: 1000;
+  cursor: pointer;
+  transition: bottom 0.3s ease-in-out, visibility 0s linear 0.3s; 
+  visibility: hidden; /* Inicialmente invisível */
+}
+/* Quando a seta está visível, define a posição e a visibilidade */
+.scroll-to-top.show {
+  bottom: 20px; /* A seta sobe para 20px do fundo da tela */
+  visibility: visible; /* A seta se torna visível */
+  transition: bottom 0.3s ease-in-out; /* Transição do movimento */
+}
+.scroll-to-top:hover {
+  background-color: #191919;
+}
+
+/*Responsibalidade, ai deuses nem acredito que finalmente "terminei", claro que ainda falta muitas coisas para ser feita porém estou satisfeita até então*/
+@media (max-width: 768px) {
+  .star {
+    width: 1.5px;
+    height: 1.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .star {
+    width: 2px;
+    height: 2px;
+  }
+  .nome{
+    font-size: 12px;
+    padding: 3px;
+    gap: 1px;
+    margin: 2px;
+  }
+}
+@media (max-width: 768px) {
+  .container-card {
+    width: 220px;
+    height: 300px;
+  }
+  .projeto {
+    width: 200px;
+    height: 280px;
+  }
+}
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+  .projeto-card {
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: auto;
+    width: 500px;
+  }
+}
+
+@media (max-width: 480px) {
+  .projeto-card {
+    grid-template-columns: 1fr;
+    justify-items: auto;
+    width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container-card {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+  }
+  .projeto {
+    width: 430px;
+    height: 220px;
+    gap: 60px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+  }
+}
+@media (max-width: 768px) {
+  .card {
+    width: 240px;
+    height: 400px;
+  }
+  .links{
+    padding: 20px;
+  }
+  .links a i{
+    font-size: 29px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 300px;
+    height: 450px;
+    margin: auto;
+    gap: 2px;
+    font-size: 17px;
+    align-items: center;
+    justify-content: center;
+  }
+  .links{
+    padding: 20px;
+  }
+  .card i{
+    font-size: 50px;
+    padding: 1px;
+    margin: 1px;
+    margin-top: 5px;
+  }
+  .card title{
+    font-size: 25px;
+    padding: 1px;
+    margin: 1px;
+    margin-top: 0px;
+  }
+  .card datil{
+    padding: 0;
+    margin: 1px;
+    margin-top: 1px;
+  }
+}
+
+@media (max-width: 768px) {
+  .inicio {
+    padding: 20px;
+  }
+  .meus {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .inicio {
+    padding: 4px;
+    margin: 0px;
+
+  }
+  .meus {
+    padding: 5px;
+  }
+}
+@media (max-width: 768px) {
+  .swiper-slide {
+    width: 250px;
+    height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .swiper-slide {
+    width: 200px;
+    height: 350px;
+  }
+}
+@media (max-width: 768px) {
+  .links a {
+    font-size: 1.5rem;
+    margin: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .links a {
+    font-size: 1.2rem;
+    margin: 3px;
+  }
+}
+@media (max-width: 768px) {
+  .ola {
+    font-size: 24px;
+  }
+  .nome {
+    font-size: 70px;
+  }
+  .dev {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ola {
+    font-size: 20px;
+  }
+  .nome {
+    font-size: 50px;
+  }
+  .dev {
+    font-size: 19px;
+  }
+}
+@media (max-width: 480px){
+  .conts p{
+    font-size: 17px;
+  }
+  .scroll-to-top:hover{
+    background: transparent;
+  }
+}
