@@ -22,7 +22,6 @@ html {
   transform-origin: center;
   animation: fly 2s linear infinite;
 }
-
 @keyframes fly {
   0% {
     transform: translate(0, 0) scale(0.1);
@@ -33,7 +32,6 @@ html {
     opacity: 0;
   }
 }
-
 
 /* Estilo da tela inicial */
 .inicio {
@@ -158,7 +156,6 @@ html {
   margin-top: 30px;
   text-align: center;
 }
-
 .container-card {
   --color: #ff88a6;
   --border-size: 0.9rem;
@@ -176,13 +173,11 @@ html {
   box-sizing: border-box;
   z-index: 3;
 }
-
 .container-card::before,
 .container-card::after {
   content: "";
   position: absolute;
 }
-
 .container-card::before {
   width: 450px;
   height: 90px;
@@ -193,24 +188,20 @@ html {
   transition: 1.9s;
   transform: rotate(-45deg) translate(0, -100px);
 }
-
 .container-card:hover::before {
   animation: cardEffect 1.9s;
 }
-
 @keyframes cardEffect {
   100% {
     transform: rotate(-45deg) translate(0, 450px);
   }
 }
-
 .container-card::after {
   background-color: var(--bg-color);
   inset: 0.25rem;
   border-radius: calc(var(--border-size) - 0.25rem);
   transition: background-color 0.35s linear;
 }
-
 .container-card:hover::after {
   background-color: #191919;
 }
@@ -229,7 +220,6 @@ html {
   gap: 70px;
   margin-top: 10px;
 }
-
 .projeto h3 {
   padding: 5px;
   color: #ff5c8d;
@@ -359,7 +349,6 @@ html {
   opacity: 0.9;
   color: white;
   filter: saturate(1.7);
-
 }
 
 .minhas-skill {
@@ -559,7 +548,7 @@ html {
   position: fixed;
   bottom: -60px; 
   right: 20px;  
-  background-color: #000; 
+  background-color: transparent; 
   color: #f8f1f3; 
   padding: 10px;
   border-radius: 50%;
@@ -576,7 +565,7 @@ html {
   transition: bottom 0.3s ease-in-out; /* Transição do movimento */
 }
 .scroll-to-top:hover {
-  background-color: #191919;
+  background-color: transparent;
 }
 
 /*Responsibalidade, ai deuses nem acredito que finalmente "terminei", claro que ainda falta muitas coisas para ser feita porém estou satisfeita até então*/

@@ -3,22 +3,17 @@ const numberOfStars = 90; // Número de estrelas
     for (let i = 0; i < numberOfStars; i++) {
       const star = document.createElement('div');
       star.classList.add('star');
-      
       // Gerar uma posição aleatória para cada estrela
       const angle = Math.random() * 2 * Math.PI;
       const distance = Math.random() * 100 + 50; // Distância para dar variação de profundidade
-
       // Define variáveis CSS personalizadas para o movimento em direção aleatória
       star.style.setProperty('--x', `${Math.cos(angle) * distance}vw`);
       star.style.setProperty('--y', `${Math.sin(angle) * distance}vh`);
-      
       // Atraso aleatório para criar variação de animação
-      star.style.animationDelay = `${Math.random() * 2}s`;
-      
+      star.style.animationDelay = `${Math.random() * 2}s`; 
       document.body.appendChild(star);
     }//Final da animação
 //
-
 
 //Animação do Scroll
 AOS.init({
@@ -58,12 +53,14 @@ var swiper = new Swiper('.tranding-slider', {
     1024: { // Para telas maiores que 1024px
       slidesPerView: 3, // Exibe 3 slides por vez
       spaceBetween: 40, // Espaço normal entre os slides
-      centeredSlides: true, // Garante que o slide ativo fique centralizado
+      centeredSlides: true,
+      autoplay: true 
     },
     1280: { // Para telas muito grandes (por exemplo, desktops)
       slidesPerView: 4, // Exibe 4 slides por vez
       spaceBetween: 50, // Mais espaço entre os slides
-      centeredSlides: true, // Garante que o slide ativo fique centralizado
+      centeredSlides: true,
+      autoplay: true
     },
   }
 });
